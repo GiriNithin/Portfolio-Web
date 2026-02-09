@@ -22,7 +22,11 @@ export function ExperienceSection({ isActive }: ExperienceSectionProps) {
                 <span className="timeline-date">{item.date}</span>
                 <h3>{item.title}</h3>
                 <p className="timeline-company">{item.company}</p>
-                <p>{item.description}</p>
+                <ul className="timeline-bullets">
+                  {item.bullets.map((bullet, i) => (
+                    <li key={i}>{bullet}</li>
+                  ))}
+                </ul>
               </div>
             </div>
           ))}

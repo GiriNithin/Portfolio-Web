@@ -1,8 +1,7 @@
 "use client";
 
-import Link from "next/link";
 import { Logo } from "./Logo";
-import { RESUME_URL, SECTIONS } from "@/lib/constants";
+import { SECTIONS } from "@/lib/constants";
 import type { SectionId } from "@/lib/constants";
 
 interface HeaderProps {
@@ -46,14 +45,6 @@ export function Header({
             ☽
           </span>
         </button>
-        <Link
-          href={RESUME_URL}
-          className="btn btn-primary resume-download"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Resume
-        </Link>
       </div>
     </header>
   );

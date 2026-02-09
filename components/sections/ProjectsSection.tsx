@@ -19,13 +19,22 @@ export function ProjectsSection({ isActive }: ProjectsSectionProps) {
           {PROJECTS_DATA.map((project) => (
             <article key={project.title} className="project-card">
               <h3>{project.title}</h3>
-              <p>{project.description}</p>
+              <ul className="project-bullets">
+                {project.bullets.map((bullet, i) => (
+                  <li key={i}>{bullet}</li>
+                ))}
+              </ul>
               <div className="project-tags">
                 {project.tags.map((tag) => (
                   <span key={tag}>{tag}</span>
                 ))}
               </div>
-              <Link href={project.link} className="project-link">
+              <Link
+                href={project.link}
+                className="project-link"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 View project →
               </Link>
             </article>

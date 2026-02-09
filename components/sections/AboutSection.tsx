@@ -1,11 +1,23 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { RESUME_URL } from "@/lib/constants";
 import type { SectionId } from "@/lib/constants";
-import { LANGUAGES, SOCIAL_LINKS } from "@/lib/content";
+import {
+  LANGUAGES,
+  SOCIAL_LINKS,
+  ABOUT_TAGLINE,
+  ABOUT_BIO,
+  LOCATION,
+} from "@/lib/content";
+
+interface GitHubStats {
+  repos: number;
+  stars: number;
+  followers: number;
+}
 
 interface AboutSectionProps {
   isActive: boolean;
@@ -14,6 +26,14 @@ interface AboutSectionProps {
 
 export function AboutSection({ isActive, goToSection }: AboutSectionProps) {
   const [avatarError, setAvatarError] = useState(false);
+  const [githubStats, setGithubStats] = useState<GitHubStats | null>(null);
+
+  useEffect(() => {
+    fetch("/api/github-stats")
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => data && setGithubStats(data))
+      .catch(() => {});
+  }, []);
 
   return (
     <section
@@ -71,23 +91,12 @@ export function AboutSection({ isActive, goToSection }: AboutSectionProps) {
         </div>
         <div className="cover-center">
           <h1 className="cover-name">Giri Nithin Yogendra</h1>
-          <p className="cover-tagline">
-            Software Developer · Building reliable, user-centric applications
-          </p>
+          <p className="cover-tagline">{ABOUT_TAGLINE}</p>
+          <p className="cover-handle">{LOCATION}</p>
           <div className="cover-bio">
-            <p>
-              Hi, I&apos;m a <strong>Software Developer</strong> focused on
-              building reliable, user-centric applications.
-            </p>
-            <p>
-              I enjoy turning complex problems into simple solutions. From
-              backend systems to frontend interfaces, I like to work across the
-              stack and keep learning.
-            </p>
-            <p>
-              When I&apos;m not coding, I explore new tools, contribute to open
-              source, and stay curious about technology and design.
-            </p>
+            {ABOUT_BIO.map((paragraph, i) => (
+              <p key={i}>{paragraph}</p>
+            ))}
           </div>
         </div>
         <div className="cover-right">
@@ -95,13 +104,22 @@ export function AboutSection({ isActive, goToSection }: AboutSectionProps) {
             <h3 className="cover-stats-title">GitHub</h3>
             <ul className="cover-stats-list">
               <li>
-                <span className="stat-value">—</span> Repos
+                <span className="stat-value">
+                  {githubStats != null ? githubStats.repos : "—"}
+                </span>{" "}
+                Repos
               </li>
               <li>
-                <span className="stat-value">—</span> Stars
+                <span className="stat-value">
+                  {githubStats != null ? githubStats.stars : "—"}
+                </span>{" "}
+                Stars
               </li>
               <li>
-                <span className="stat-value">—</span> Followers
+                <span className="stat-value">
+                  {githubStats != null ? githubStats.followers : "—"}
+                </span>{" "}
+                Followers
               </li>
             </ul>
           </div>

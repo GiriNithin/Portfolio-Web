@@ -1,5 +1,7 @@
 "use client";
 
+import { CONTACT_EMAIL, CONTACT_PHONE } from "@/lib/content";
+
 interface ContactSectionProps {
   isActive: boolean;
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
@@ -19,8 +21,11 @@ export function ContactSection({
       <div className="section-inner">
         <h1 className="section-title">Contact Me</h1>
         <p className="contact-intro">
-          Have a project in mind or want to say hi? Send me a message and
-          I&apos;ll get back to you.
+          Have a project in mind or want to say hi? Reach me at{" "}
+          <a href={`mailto:${CONTACT_EMAIL}`} className="contact-link">{CONTACT_EMAIL}</a>
+          {" "}or{" "}
+          <a href={`tel:${CONTACT_PHONE.replace(/\D/g, "")}`} className="contact-link">{CONTACT_PHONE}</a>
+          , or send a message below.
         </p>
         <form
           className="contact-form"
