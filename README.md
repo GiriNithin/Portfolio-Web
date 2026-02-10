@@ -6,7 +6,7 @@ A minimal, responsive portfolio built with **Next.js 14** (App Router) and **Typ
 
 - **5 sections**: About (cover), Skills, Projects, Experience, Contact
 - **Dark / light mode** — toggle in the header; preference saved in `localStorage` (no flash on load)
-- **Resume** — “View Resume” on the cover and “Resume” in the header open your Google Drive resume
+- **Resume** — “View Resume” on the cover opens your Google Drive resume (requires `NEXT_PUBLIC_RESUME_URL` in env)
 - **Contact form** — sends messages via Formspree and shows an on-page toast when sent
 
 ## Tech stack
@@ -80,3 +80,13 @@ npm start
 ```
 
 Deploy to [Vercel](https://vercel.com), Netlify, or any Node host that supports Next.js.
+
+### Vercel: why “View Resume” might not work
+
+Next.js bakes `NEXT_PUBLIC_*` env vars into the app **at build time**. If the resume button does nothing or the button is missing on Vercel:
+
+1. In Vercel: open your project → **Settings** → **Environment Variables**.
+2. Add **`NEXT_PUBLIC_RESUME_URL`** with your full Google Drive resume link (e.g. `https://drive.google.com/file/d/xxxx/view`).
+3. Add **`NEXT_PUBLIC_FORMSPREE_ENDPOINT`** if you use the contact form.
+4. **Redeploy** the project (e.g. **Deployments** → ⋮ on latest → **Redeploy**).  
+   A new build is required so the new env vars are included; editing env vars alone is not enough.

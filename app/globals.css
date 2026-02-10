@@ -260,6 +260,8 @@ body {
   height: 100%;
   border-radius: 50%;
   object-fit: cover;
+  /* Focus crop on top-center so the face is centered in the circle */
+  object-position: top center;
 }
 
 .cover-avatar-placeholder {
@@ -430,6 +432,41 @@ body {
   flex-shrink: 0;
 }
 
+.cover-scroll-prompt {
+  margin-top: 2.5rem;
+  padding-top: 1rem;
+  text-align: center;
+}
+
+.cover-scroll-btn {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.cover-scroll-btn:hover {
+  color: var(--accent);
+}
+
+.cover-scroll-icon {
+  font-size: 1.25rem;
+  animation: cover-scroll-bounce 2s ease-in-out infinite;
+}
+
+@keyframes cover-scroll-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(4px); }
+}
+
 /* ===== Skills ===== */
 .section-skills {
   width: 100vw;
@@ -495,6 +532,11 @@ body {
   height: 24px;
   flex-shrink: 0;
   object-fit: contain;
+}
+
+/* Dark mode: make icons light so they're visible on dark background */
+[data-theme="dark"] .skill-tech-icon {
+  filter: brightness(0) invert(1);
 }
 
 .skill-tech-icon--placeholder {

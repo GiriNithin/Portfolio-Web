@@ -59,14 +59,16 @@ export function AboutSection({ isActive, goToSection }: AboutSectionProps) {
               />
             )}
           </div>
-          <Link
-            href={RESUME_URL}
-            className="btn btn-resume view-resume"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <span className="btn-icon">📄</span> View Resume
-          </Link>
+          {RESUME_URL ? (
+            <Link
+              href={RESUME_URL}
+              className="btn btn-resume view-resume"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span className="btn-icon">📄</span> View Resume
+            </Link>
+          ) : null}
           <button
             type="button"
             className="btn btn-connect connect-with-me"
@@ -92,7 +94,6 @@ export function AboutSection({ isActive, goToSection }: AboutSectionProps) {
         <div className="cover-center">
           <h1 className="cover-name">Giri Nithin Yogendra</h1>
           <p className="cover-tagline">{ABOUT_TAGLINE}</p>
-          <p className="cover-handle">{LOCATION}</p>
           <div className="cover-bio">
             {ABOUT_BIO.map((paragraph, i) => (
               <p key={i}>{paragraph}</p>
@@ -138,6 +139,17 @@ export function AboutSection({ isActive, goToSection }: AboutSectionProps) {
             </ul>
           </div>
         </div>
+      </div>
+      <div className="cover-scroll-prompt">
+        <button
+          type="button"
+          className="cover-scroll-btn"
+          onClick={() => goToSection("skills")}
+          aria-label="Scroll to Skills"
+        >
+          <span className="cover-scroll-text">Scroll to explore</span>
+          <span className="cover-scroll-icon" aria-hidden="true">↓</span>
+        </button>
       </div>
     </section>
   );

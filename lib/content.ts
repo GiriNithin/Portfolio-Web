@@ -120,7 +120,11 @@ export const LANGUAGES = [
 ];
 
 export const SOCIAL_LINKS = [
-  { href: "https://www.linkedin.com/in/girinithin/", label: "LinkedIn", text: "in" },
+  {
+    href: "https://www.linkedin.com/in/girinithin/",
+    label: "LinkedIn",
+    text: "in",
+  },
   { href: "https://github.com/GiriNithin", label: "GitHub", text: "gh" },
 ];
 
@@ -128,13 +132,26 @@ export const CONTACT_EMAIL = "girinithinyogendra@outlook.com";
 export const CONTACT_PHONE = "551-344-7404";
 export const LOCATION = "Irving, TX";
 
-export const ABOUT_TAGLINE = "Software Developer · MS Computer Science @ UT Arlington";
+export const ABOUT_TAGLINE =
+  "Software Developer · MS Computer Science @ UT Arlington";
 export const ABOUT_BIO = [
-  "I'm a Software Developer with a Master's in Computer Science from The University of Texas at Arlington (4.0 GPA). I build high-performance solutions and full-stack applications, from optimizing PHP scripts handling 6M+ payroll records at Paycom to developing React-based dashboards and Python data pipelines.",
-  "I have experience across the stack: C#, ASP.NET Core, React, Node.js, Python, and cloud services like AWS. I've also worked as a Graduate Teaching Assistant and Research Assistant, and I enjoy turning complex problems into scalable, maintainable systems.",
+  "I'm a Software Engineer with experience in designing and building intelligent, scalable systems to solve real world problems. I hold a Master's in Computer Science from The University of Texas at Arlington (4.0 GPA).",
+  "Passionate about modern web technologies, cloud platforms, and AI-powered solutions, I enjoy creating efficient, user-focused software that delivers measurable impact.",
 ];
 
 export const EDUCATION = [
-  { degree: "Master of Science in Computer Science", school: "The University of Texas at Arlington", location: "Arlington, TX", cgpa: "4.0/4.0", period: "Jan 2023 – Dec 2024" },
-  { degree: "Bachelor of Technology in Computer Science and Game Development", school: "Jawaharlal Nehru Architecture and Fine Arts University", location: "Hyderabad, India", cgpa: "8.1/10.0", period: "Aug 2018 – Jul 2022" },
+  {
+    degree: "Master of Science in Computer Science",
+    school: "The University of Texas at Arlington",
+    location: "Arlington, TX",
+    cgpa: "4.0/4.0",
+    period: "Jan 2023 – Dec 2024",
+  },
+  {
+    degree: "Bachelor of Technology in Computer Science and Game Development",
+    school: "Jawaharlal Nehru Architecture and Fine Arts University",
+    location: "Hyderabad, India",
+    cgpa: "8.1/10.0",
+    period: "Aug 2018 – Jul 2022",
+  },
 ];
